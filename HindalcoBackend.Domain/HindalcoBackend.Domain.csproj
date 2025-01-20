@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="HindalcoBackend.Business">
+      <HintPath>..\HindalcoBackend.Business\bin\Debug\net8.0\HindalcoBackend.Business.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

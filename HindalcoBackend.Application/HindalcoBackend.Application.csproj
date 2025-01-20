@@ -6,4 +6,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HindalcoBackend.Business\HindalcoBackend.Business.csproj" />
+    <ProjectReference Include="..\HindalcoBackend.Domain\HindalcoBackend.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="HindalcoBackend.Domain">
+      <HintPath>..\HindalcoBackend.Domain\bin\Debug\net8.0\HindalcoBackend.Domain.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
