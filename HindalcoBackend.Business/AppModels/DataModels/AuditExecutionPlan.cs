@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HindalcoBackend.Application.DataModels
+namespace HindalcoBackend.Business
 {
     public class AuditExecutionPlan
     {

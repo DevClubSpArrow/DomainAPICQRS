@@ -1,31 +1,23 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HindalcoBackend.Business
+namespace AuditManagementDAL.DTOObject
 {
-    public class DepartmentMaster
+    public class DepartmentMasterDTO
     {
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid DepartmentId { get; set; } = Guid.NewGuid();
-
+        public Guid DepartmentId { get; set; }=Guid.NewGuid();
         [Required]
         public string? DepartmentName { get; set; }
-
-        [Required]
-        public string? DepartmentCode { get; set; }
-
-        public DateTime CreatedDate { get; set; }
-
-        [Required]
-        public Guid OperationUnitCode { get; set; }
-
         [Required]
         public string? CreatedBy { get; set; }
+        [Required]
+        public string? DepartmentCode { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public Guid OperationUnitCode { get; set; }
+        public ICollection <OperationUnitDTO>? OperationUnit { get;}
 
-        //public int IsActive { get; set; }
-
-        public ICollection<OperationUnit>? OperationUnit { get; }
     }
 }

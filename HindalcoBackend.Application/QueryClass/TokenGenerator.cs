@@ -22,7 +22,7 @@ namespace HindalcoBackend.Application.Models
         }
         public class GetAuditCalendar : IRequest<HindalcoBackend.Domain.DomainModels.DataModels.AuditCalendar> {
             public int Id { get; set; }
-            public string? Token { get; set; }
+            public string? token { get; set; }
         }
 
         public class GetAllAuditCalendar : IRequest<IList<HindalcoBackend.Domain.DomainModels.DataModels.AuditCalendar>>
@@ -67,12 +67,12 @@ namespace HindalcoBackend.Application.Models
                     throw new InvalidOperationException("Requested Id is null, cannot validate token.");
                 }
 
-                if (request.Token == null)
+                if (request.token == null)
                 {
                     throw new InvalidOperationException("Requested Token is null, cannot validate request.");
                 }
 
-                return await _auditService.GetAuditById(request.Id, request.Token);
+                return await _auditService.GetAuditById(request.Id, request.token);
             }
 
             public async Task<IList<HindalcoBackend.Domain.DomainModels.DataModels.AuditCalendar>> Handle(GetAllAuditCalendar request, CancellationToken cancellationToken)

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HindalcoBackend.Application.DataModels
+namespace HindalcoBackend.Business
 {
     //[PrimaryKey(nameof(AuditCategoryId), nameof(AuditCategoryCode))]
     public class AuditCategory
