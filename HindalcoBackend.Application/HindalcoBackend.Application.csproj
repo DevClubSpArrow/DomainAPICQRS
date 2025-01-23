@@ -11,11 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HindalcoBackend.Business\HindalcoBackend.Business.csproj" />
-    <ProjectReference Include="..\HindalcoBackend.Domain\HindalcoBackend.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Reference Include="HindalcoBackend.Business">
+      <HintPath>..\HindalcoBackend.Domain\bin\Debug\net8.0\HindalcoBackend.Business.dll</HintPath>
+    </Reference>
     <Reference Include="HindalcoBackend.Domain">
       <HintPath>..\HindalcoBackend.Domain\bin\Debug\net8.0\HindalcoBackend.Domain.dll</HintPath>
     </Reference>

@@ -10,7 +10,6 @@ namespace HindalcoBackend.Domain.DomainModels.DataModels
 
         [Required]
         public string? AuditCode { get; set; }
-
         public DateTime CreatedDate { get; set; }
 
         [Required]
@@ -53,7 +52,6 @@ namespace HindalcoBackend.Domain.DomainModels.DataModels
 
         [Required]
         public int Status { get; set; }
-
         public string? AuditPlanUpdatedBy { set; get; }
         public DateTime AuditPlanUpdatedDate { set; get; }
         public Guid AuditPlanID { set; get; }

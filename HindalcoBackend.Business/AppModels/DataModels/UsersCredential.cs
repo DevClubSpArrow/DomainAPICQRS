@@ -14,7 +14,7 @@ namespace HindalcoBackend.Application.DataModels
         public string? Email { get; set; }
         public long PhoneNumber { get; set; }
         public int RetryAttempts { get; set; }
-        public bool? IsActivated { get; set; }
+        public bool IsActivated { get; set; }
         public bool IsLocked { get; set; }
         public DateTime? DeactivatedDateTime { get; set; }
         public DateTime? LockedDateTime { get; set; }

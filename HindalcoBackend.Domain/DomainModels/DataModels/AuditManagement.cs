@@ -62,7 +62,6 @@ namespace HindalcoBackend.Domain.DomainModels.DataModels
         [Required]
         [MaxLength(3)]
         public int Status { get; set; }
-
         public string? AuditPlanUpdatedBy { set; get; }
         public DateTime AuditPlanUpdatedDate { set; get; }
         public Guid AuditPlanID { set; get; }

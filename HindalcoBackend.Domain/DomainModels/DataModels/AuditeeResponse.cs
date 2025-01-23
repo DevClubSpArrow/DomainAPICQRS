@@ -23,7 +23,6 @@ namespace HindalcoBackend.Domain.DomainModels.DataModels
 
         //  public string? AuditeeRemarks { get; }
         public string? CorporateRemarks { get; set; }
-
         public string? UploadSupportDocs { get; set; }
         public string? FinalClosedByCorporateUser { get; set; }
         public Guid AuditManId { get; set; }

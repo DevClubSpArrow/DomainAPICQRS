@@ -149,7 +149,6 @@ namespace HindalcoBackend.Business.HelperClass
             {
                 // Log the exception (replace with your logging mechanism)
                 Console.WriteLine($"Error validating token: {ex.Message}");
-
                 // Optionally, propagate the exception or handle it as needed
                 throw;
             }

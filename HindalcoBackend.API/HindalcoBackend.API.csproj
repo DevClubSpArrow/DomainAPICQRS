@@ -7,8 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.2.efcore.9.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="HindalcoBackend.Application">
+      <HintPath>..\HindalcoBackend.Application\bin\Debug\net8.0\HindalcoBackend.Application.dll</HintPath>
+    </Reference>
+    <Reference Include="HindalcoBackend.Business">
+      <HintPath>..\HindalcoBackend.Domain\bin\Debug\net8.0\HindalcoBackend.Business.dll</HintPath>
+    </Reference>
+    <Reference Include="HindalcoBackend.Domain">
+      <HintPath>..\HindalcoBackend.Domain\bin\Debug\net8.0\HindalcoBackend.Domain.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

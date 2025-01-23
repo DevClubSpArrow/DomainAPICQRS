@@ -1,4 +1,4 @@
-﻿using Azure.Core;
+﻿
 using HindalcoBackend.Business;
 using HindalcoBackend.Domain.DomainModels.DataModels;
 using MediatR;
@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using AuditCalendar = HindalcoBackend.Business.AuditCalendar;
 
 namespace HindalcoBackend.Application.CommandClass
 {
@@ -25,7 +25,7 @@ namespace HindalcoBackend.Application.CommandClass
         {
             public int  AuditCalendarId { get; }
             [Required]
-            public AuditCalendar? auditCal { get; }
+            public HindalcoBackend.Business.AuditCalendar? auditCal { get; }
             [Required]
             public string? token { get; } 
         }
@@ -53,7 +53,7 @@ namespace HindalcoBackend.Application.CommandClass
                 {
                     throw new InvalidOperationException("Requested Token is null, cannot validate request.");
                 }
-                var auditcal = new AuditCalendar
+                var auditcal = new HindalcoBackend.Business.AuditCalendar
                 {
                    AuditStart=command.auditCalendar.AuditStart,
                    AuditCategory=command.auditCalendar.AuditCategory,
@@ -85,7 +85,6 @@ namespace HindalcoBackend.Application.CommandClass
                 UpdateIfNotNull(requestBody.auditCal.AuditCategory, value => _existAudit.AuditCategory = value);
                 UpdateIfNotNull(requestBody.auditCal.DocumentedBy, value => _existAudit.DocumentedBy = value);
                 UpdateIfNotNull(requestBody.auditCal.AuditName, value => _existAudit.AuditName = value);
-
                 // update changes
                 return await _auditService.UpdateAuditCalendar(requestBody.AuditCalendarId, _existAudit,requestBody.token);
             }

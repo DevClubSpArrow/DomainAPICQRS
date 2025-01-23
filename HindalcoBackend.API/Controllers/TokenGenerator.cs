@@ -1,4 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using HindalcoBackend.Application.CommandClass;
+using HindalcoBackend.Business.Service;
+using HindalcoBackend.Domain.Interface;
+using MediatR;
+
+
 
 namespace HindalcoBackend.API.Controllers
 {
@@ -6,21 +12,20 @@ namespace HindalcoBackend.API.Controllers
     [Route("api/[controller]")]
     public class TokenGenerator : ControllerBase
     {
-        //private readonly IProductQueryService _queryService;
-        //private readonly IProductCommandService _commandService;
+        private readonly HindalcoBackend.Business.Service.AuditManager _queryService;
+        private readonly IMediator _mediator;
+        public TokenGenerator(IMediator mediator, HindalcoBackend.Business.Service.AuditManager auditManager)
+        {
+            _queryService = auditManager;
+            _mediator = mediator;
+        }
 
-        //public TokenGenerator(IProductQueryService queryService, IProductCommandService commandService)
-        //{
-        //    _queryService = queryService;
-        //    _commandService = commandService;
-        //}
-
-        //[HttpGet]
-        //public async Task<IActionResult> Get()
-        //{
-        //    var products = await _queryService.GetProductsAsync();
-        //    return Ok(products);
-        //}
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var products = await _mediator.Send(new HindalcoBackend.Application.Models.TokenGenerator.Query());
+            return Ok(products);
+        }
 
         //[HttpPost]
         //public async Task<IActionResult> Create([FromBody] ProductCreateDto dto)

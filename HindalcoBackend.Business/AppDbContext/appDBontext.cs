@@ -8,6 +8,7 @@ using System;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
 using HindalcoBackend.Business;
+using HindalcoBackend.Application.DataModels;
 
 namespace HindalcoBackend.Business
 {
@@ -37,5 +38,16 @@ namespace HindalcoBackend.Business
         public DbSet<AuditCalendarL2History> tbl_auditcalendarl2history => Set<AuditCalendarL2History>();
         public DbSet<AuditManagementHistory> tbl_auditmangementhistory => Set<AuditManagementHistory>();
         public DbSet<AuditPlanHistory> tbl_auditplanhistory => Set<AuditPlanHistory>();
+        public DbSet<UsersCredential> tbl_userscredentials=> Set<UsersCredential>();
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            //######## applying global query filter to avoid loading inactive or locked users ########
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+            modelBuilder.Entity<UsersCredential>().HasQueryFilter(a => a.IsActivated && a.IsLocked == false);
+
+            // ######## to avoid the above filter at the query level or LINQ query uls e the beolw command ########
+            //var allUsers = appDBontext.UsersCredential.IgnoreQueryFilters().ToList();
+        }
     }
 }

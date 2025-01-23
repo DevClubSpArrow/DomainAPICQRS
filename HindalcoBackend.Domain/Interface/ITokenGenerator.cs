@@ -10,15 +10,17 @@ namespace HindalcoBackend.Domain.Interface
 {
     public interface ITokenGenerator
     {
-       public Task<HindalcoBackend.Business.ResponseToken> Generatetoken(HindalcoBackend.Domain.DomainModels.DataModels.UserModel umodel);
+       public Task<HindalcoBackend.Business.ResponseToken> Generatetoken(HindalcoBackend.Business.UserModel umodel);
        public Task<HindalcoBackend.Business.ResponseToken> GetRenewedToken(AuthRefreshToken refToken);
        public Task<int> ValidateJwttoken(string token);
     }
     public  interface IAuditMapper
     {
-       public Task<int> SaveAudit(HindalcoBackend.Domain.DomainModels.DataModels. AuditCalendar auditCal, string token);
-       public  Task<IList<HindalcoBackend.Domain.DomainModels.DataModels.AuditCalendar>> GetAllAuditCalendar(string token);
-       public Task<HindalcoBackend.Domain.DomainModels.DataModels.AuditCalendar> GetAuditById(int id, string token);
-       public Task<bool> UpdateAuditCalendar(int AuditCalendarId, HindalcoBackend.Domain.DomainModels.DataModels.AuditCalendar auditCal, string token);
+       public Task<int> SaveAudit(HindalcoBackend.Business. AuditCalendar auditCal, string token);
+       public  Task<IList<HindalcoBackend.Business.AuditCalendar>> GetAllAuditCalendar(string token);
+       public Task<HindalcoBackend.Business.AuditCalendar> GetAuditById(int id, string token);
+       public Task<bool> UpdateAuditCalendar(int AuditCalendarId, HindalcoBackend.Business.AuditCalendar auditCal, string token);
+       public Task<int> ValidateInputtoken(string inputToken);
+
     }
 }
