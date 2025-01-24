@@ -10,7 +10,6 @@ namespace HindalcoBackend.Application.DataModels
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid TaskId { get; set; }
-
         public string? TaskAssignedBy { get; set; }
         public string? TaskAssignedTo { get; set; }
         public string? CurrentStatus { get; set; }

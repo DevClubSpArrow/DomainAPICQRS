@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HindalcoBackend.Domain.DomainModels.DataModels
+namespace HindalcoBackend.Domain
 {
     public class AuditCalendar
     {

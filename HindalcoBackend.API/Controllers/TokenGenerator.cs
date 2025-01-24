@@ -3,6 +3,7 @@ using HindalcoBackend.Application.CommandClass;
 using HindalcoBackend.Business.Service;
 using HindalcoBackend.Domain.Interface;
 using MediatR;
+using HindalcoBackend.Application.DataModels;
 
 
 
@@ -12,19 +13,18 @@ namespace HindalcoBackend.API.Controllers
     [Route("api/[controller]")]
     public class TokenGenerator : ControllerBase
     {
-        private readonly HindalcoBackend.Business.Service.AuditManager _queryService;
+        private readonly HindalcoBackend.Application.Interface.IBusiness _business;
         private readonly IMediator _mediator;
-        public TokenGenerator(IMediator mediator, HindalcoBackend.Business.Service.AuditManager auditManager)
+        public TokenGenerator(IMediator mediator, HindalcoBackend.Application.Interface.IBusiness business)
         {
-            _queryService = auditManager;
+            _business = business;
             _mediator = mediator;
         }
-
-        [HttpGet]
-        public async Task<IActionResult> Get()
+               
+        [HttpPost]
+        public async Task<HindalcoBackend.Business.ResponseToken> GenerateToken([FromBody] HindalcoBackend.Business.UserModel umodel)
         {
-            var products = await _mediator.Send(new HindalcoBackend.Application.Models.TokenGenerator.Query());
-            return Ok(products);
+           return await _business.Generatetoken(umodel);
         }
 
         //[HttpPost]

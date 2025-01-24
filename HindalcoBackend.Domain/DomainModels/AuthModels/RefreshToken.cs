@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
-namespace HindalcoBackend.Domain.DomainModels.AuthModels
+namespace HindalcoBackend.Domain
 {
     public class AuthRefreshToken
     {
