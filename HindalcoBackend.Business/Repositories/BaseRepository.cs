@@ -15,7 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace HindalcoBackend.Business.Repositories
 {
     public  class BaseRepository : ITokenGenerator
-    {
+        {
         private readonly appDBontext _appDBontext;
         private HelperClass.HelperAction _helper;
         private readonly ILogger<BaseRepository> _logger;
@@ -24,7 +24,7 @@ namespace HindalcoBackend.Business.Repositories
             _appDBontext = appDBontext;
             _helper = helper;
         }
-        public async Task<HindalcoBackend.Business.ResponseToken> Generatetoken(HindalcoBackend.Business.UserModel umodel)
+       public async Task<HindalcoBackend.Business.ResponseToken> Generatetoken(HindalcoBackend.Business.UserModel umodel)
         {
             ResponseToken? rspToken = null;
             try

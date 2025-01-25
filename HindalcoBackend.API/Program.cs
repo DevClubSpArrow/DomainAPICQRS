@@ -2,10 +2,9 @@ using Microsoft.Extensions.DependencyInjection;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using HindalcoBackend.Domain.Interface;
-using HindalcoBackend.Business.Service;
+using HindalcoBackend.Business;
 using HindalcoBackend.Application;
 using HindalcoBackend.API;
-using HindalcoBackend.Business;
 using System;
 using System.Reflection;
 using HindalcoBackend.Application.Interface;
@@ -19,29 +18,44 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
-builder.Services.AddControllers();
-builder.Services.AddDbContext<appDBontext>(options =>
+if (builder.Environment.IsDevelopment())
 {
-    var config = builder.Configuration;
-    var connectionString = config.GetConnectionString("AuditAPIConnection");
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-});
-builder.Services.AddMediatR(typeof(HindalcoBackend.Application.TokenGenerator).Assembly);
+    builder.Services.AddDbContext<appDBontext>(options =>
+    {
+        var config = builder.Configuration;
+        var connectionString = config.GetConnectionString("AuditAPIConnection");
+        options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+    });
+}
+else
+{
+    builder.Services.AddDbContext<appDBontext>(options =>
+    {
+        var config = builder.Configuration;
+        var connectionString = config.GetConnectionString("AuditAPIConnection");
+        options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+        // _helperAct = new AuditManagementDAL.HelperClass.HelperAction(builder.Configuration); //injection to the constructor
+    });
+}
+var con = builder.Configuration.GetConnectionString("AuditAPIConnection");
+builder.Services.AddControllers();
 builder.Services.AddScoped<IBusiness, HindalcoBackend.Application.Service.AuditManager>();
+builder.Services.AddScoped<ITokenGenerator,HindalcoBackend.Business.Repositories.BaseRepository>();
+builder.Services.AddScoped<HindalcoBackend.Business.HelperClass.HelperAction>();
+builder.Services.AddScoped<HindalcoBackend.Application.CommandHandler>();
+builder.Services.AddMediatR(typeof(HindalcoBackend.Application.Command).Assembly);
 
 //builder.Services.AddScoped<HindalcoBackend.Domain.Interface.ITokenGenerator, AuditManager>();
-
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.I
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseHttpsRedirection();
+app.UseSwagger();
+app.UseSwaggerUI();
 
 var summaries = new[]
 {
@@ -60,11 +74,8 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 })
-.WithName("GetWeatherForecast")
+.WithName("GetWeatherForecast") 
 .WithOpenApi();
-
-app.UseSwagger();
-app.UseSwaggerUI();
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)

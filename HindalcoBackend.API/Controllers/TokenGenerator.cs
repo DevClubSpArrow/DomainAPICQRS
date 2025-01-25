@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using HindalcoBackend.Application.CommandClass;
-using HindalcoBackend.Business.Service;
+using HindalcoBackend.Business;
 using HindalcoBackend.Domain.Interface;
 using MediatR;
 using HindalcoBackend.Application.DataModels;
-
-
 
 namespace HindalcoBackend.API.Controllers
 {
@@ -14,11 +12,9 @@ namespace HindalcoBackend.API.Controllers
     public class TokenGenerator : ControllerBase
     {
         private readonly HindalcoBackend.Application.Interface.IBusiness _business;
-        private readonly IMediator _mediator;
-        public TokenGenerator(IMediator mediator, HindalcoBackend.Application.Interface.IBusiness business)
+        public TokenGenerator(HindalcoBackend.Application.Interface.IBusiness business)
         {
             _business = business;
-            _mediator = mediator;
         }
                
         [HttpPost]

@@ -20,7 +20,7 @@
       <HintPath>..\HindalcoBackend.Application\bin\Debug\net8.0\HindalcoBackend.Application.dll</HintPath>
     </Reference>
     <Reference Include="HindalcoBackend.Business">
-      <HintPath>..\HindalcoBackend.Domain\bin\Debug\net8.0\HindalcoBackend.Business.dll</HintPath>
+      <HintPath>..\HindalcoBackend.Business\bin\Debug\net8.0\HindalcoBackend.Business.dll</HintPath>
     </Reference>
     <Reference Include="HindalcoBackend.Domain">
       <HintPath>..\HindalcoBackend.Domain\bin\Debug\net8.0\HindalcoBackend.Domain.dll</HintPath>

@@ -14,7 +14,6 @@ using System.ComponentModel.Design.Serialization;
 using System.Transactions;
 using HindalcoBackend.Application.Interface;
 using MediatR;
-using static HindalcoBackend.Application.TokenGenerator;
 using HindalcoBackend.Business;
 using static HindalcoBackend.Application.Queries.TokenQuery;
 
@@ -30,11 +29,10 @@ namespace HindalcoBackend.Application.Service
         {
             _mediator = mediator;
             _logger = logger;
-
         }
-        async Task<HindalcoBackend.Business.ResponseToken>IBusiness. Generatetoken(HindalcoBackend.Business.UserModel umodel)
+       async Task<HindalcoBackend.Business.ResponseToken>IBusiness. Generatetoken(HindalcoBackend.Business.UserModel umodel)
         {
-            return await _mediator.Send(new GenerateTokenQuery());
+            return await _mediator.Send(new Command());
         }
     }
 }

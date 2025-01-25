@@ -9,6 +9,6 @@ namespace HindalcoBackend.Application.Queries
 {
     public class TokenQuery
     {
-        public record GenerateTokenQuery(): IRequest<Business.ResponseToken>;
+        public record Command(): IRequest<Business.ResponseToken>;
     }
 }
