@@ -42,8 +42,8 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IBusiness, HindalcoBackend.Application.Service.AuditManager>();
 builder.Services.AddScoped<ITokenGenerator,HindalcoBackend.Business.Repositories.BaseRepository>();
 builder.Services.AddScoped<HindalcoBackend.Business.HelperClass.HelperAction>();
-builder.Services.AddScoped<HindalcoBackend.Application.CommandHandler>();
-builder.Services.AddMediatR(typeof(HindalcoBackend.Application.Command).Assembly);
+builder.Services.AddScoped<HindalcoBackend.Application.CommandClass.TokenHandler>();
+builder.Services.AddMediatR(typeof(HindalcoBackend.Application.Command.GetToken).Assembly);
 
 //builder.Services.AddScoped<HindalcoBackend.Domain.Interface.ITokenGenerator, AuditManager>();
 var app = builder.Build();

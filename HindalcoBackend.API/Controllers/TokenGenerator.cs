@@ -16,11 +16,11 @@ namespace HindalcoBackend.API.Controllers
         {
             _business = business;
         }
-               
+
         [HttpPost]
-        public async Task<HindalcoBackend.Business.ResponseToken> GenerateToken([FromBody] HindalcoBackend.Business.UserModel umodel)
+        public async Task<HindalcoBackend.Domain.ResponseToken> GenerateToken([FromBody] HindalcoBackend.Domain.DomainModels.DataModels.UserModel umodel)
         {
-           return await _business.Generatetoken(umodel);
+            return await _business.Generatetoken(umodel);
         }
 
         //[HttpPost]
