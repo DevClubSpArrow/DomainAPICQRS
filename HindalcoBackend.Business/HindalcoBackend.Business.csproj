@@ -19,6 +19,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.3.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.2.efcore.9.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.3.1" />
@@ -26,6 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="HindalcoBackend.Application">
+      <HintPath>..\HindalcoBackend.Application\bin\Debug\net8.0\HindalcoBackend.Application.dll</HintPath>
+    </Reference>
+    <Reference Include="HindalcoBackend.Business">
+      <HintPath>..\HindalcoBackend.Application\bin\Debug\net8.0\HindalcoBackend.Business.dll</HintPath>
+    </Reference>
     <Reference Include="HindalcoBackend.Domain">
       <HintPath>..\HindalcoBackend.Domain\bin\Debug\net8.0\HindalcoBackend.Domain.dll</HintPath>
     </Reference>

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace HindalcoBackend.Application.Interface
 {
-    public  interface IBusiness
+    public  interface IBusiness<T> where T : class
     {
-        Task<HindalcoBackend.Business.ResponseToken> Generatetoken(HindalcoBackend.Business.UserModel umodel);
+        Task<HindalcoBackend.Domain.ResponseToken> Generatetoken(HindalcoBackend.Domain.DomainModels.DataModels.UserModel umodel);
+        Task<IEnumerable<T>> GetallUserAsync();
+        Task<T?> GetUserByEmail(string Email);
+        Task<T> AddAsync(T entity);
     }
 }

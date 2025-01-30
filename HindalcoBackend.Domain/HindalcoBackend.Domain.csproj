@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HindalcoBackend.Application\HindalcoBackend.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="HindalcoBackend.Business">
       <HintPath>..\HindalcoBackend.Business\bin\Debug\net8.0\HindalcoBackend.Business.dll</HintPath>
     </Reference>

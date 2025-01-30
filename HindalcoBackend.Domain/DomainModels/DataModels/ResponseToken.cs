@@ -1,4 +1,4 @@
-﻿using HindalcoBackend.Business;
+﻿using HindalcoBackend.Domain;
 
 namespace HindalcoBackend.Domain
 {

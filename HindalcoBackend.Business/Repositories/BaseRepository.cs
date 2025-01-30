@@ -24,9 +24,9 @@ namespace HindalcoBackend.Business.Repositories
             _appDBontext = appDBontext;
             _helper = helper;
         }
-       public async Task<HindalcoBackend.Business.ResponseToken> Generatetoken(HindalcoBackend.Business.UserModel umodel)
+       public async Task<HindalcoBackend.Domain.ResponseToken> Generatetoken(HindalcoBackend.Domain.DomainModels.DataModels.UserModel umodel)
         {
-            ResponseToken? rspToken = null;
+            HindalcoBackend.Domain.ResponseToken? rspToken = null;
             try
             {
                 if (umodel != null)
@@ -63,7 +63,7 @@ namespace HindalcoBackend.Business.Repositories
                         var token = tokenhandler.CreateJwtSecurityToken(tokendescriptor);
                         var jwttoken = tokenhandler.WriteToken(token);
                         var stringtoken = tokenhandler.WriteToken(token);
-                        rspToken = new  ResponseToken
+                        rspToken = new  HindalcoBackend.Domain.ResponseToken
                         {
                             JwtToken = jwttoken,
                             RefreshToken = authRToken.RefreshToken

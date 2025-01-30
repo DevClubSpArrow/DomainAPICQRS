@@ -7,13 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Service\**" />
+    <EmbeddedResource Remove="Service\**" />
+    <None Remove="Service\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.3.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="HindalcoBackend.Business">
-      <HintPath>..\HindalcoBackend.Domain\bin\Debug\net8.0\HindalcoBackend.Business.dll</HintPath>
+      <HintPath>..\HindalcoBackend.Business\bin\Debug\net8.0\HindalcoBackend.Business.dll</HintPath>
     </Reference>
     <Reference Include="HindalcoBackend.Domain">
       <HintPath>..\HindalcoBackend.Domain\bin\Debug\net8.0\HindalcoBackend.Domain.dll</HintPath>

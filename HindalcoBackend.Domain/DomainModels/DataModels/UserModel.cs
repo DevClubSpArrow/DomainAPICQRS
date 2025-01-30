@@ -10,8 +10,6 @@ namespace HindalcoBackend.Domain.DomainModels.DataModels
         public string? UserName { get; set; }
 
         [Required]
-        [MaxLength(10)]
-        [MinLength(1)]
         public int Uid { get; set; }
 
 

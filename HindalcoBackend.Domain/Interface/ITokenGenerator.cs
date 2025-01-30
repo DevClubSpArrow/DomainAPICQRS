@@ -1,5 +1,8 @@
-﻿using HindalcoBackend.Domain;
+﻿using HindalcoBackend.Application.Interface;
+using HindalcoBackend.Business;
+using HindalcoBackend.Domain;
 using HindalcoBackend.Domain.DomainModels.DataModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,19 +11,19 @@ using System.Threading.Tasks;
 
 namespace HindalcoBackend.Domain.Interface
 {
-    public interface ITokenGenerator
+    public class ITokenGenerator<T> : IBusiness<T> where T : class
     {
-       Task<HindalcoBackend.Business.ResponseToken> Generatetoken(HindalcoBackend.Business.UserModel umodel);
-    //   public Task<HindalcoBackend.Business.ResponseToken> GetRenewedToken(AuthRefreshToken refToken);
-    //   public Task<int> ValidateJwttoken(string token);
-    }
-    public  interface IAuditMapper
-    {
-       public Task<int> SaveAudit(HindalcoBackend.Domain.AuditCalendar auditCal, string token);
-       public  Task<IList<HindalcoBackend.Domain.AuditCalendar>> GetAllAuditCalendar(string token);
-       public Task<HindalcoBackend.Domain.AuditCalendar> GetAuditById(int id, string token);
-       public Task<bool> UpdateAuditCalendar(int AuditCalendarId, HindalcoBackend.Domain.AuditCalendar auditCal, string token);
-       public Task<int> ValidateInputtoken(string inputToken);
+
+        private readonly appDBontext _appdbContext;
+        private readonly DbSet<T> _dbSet;
+        public ITokenGenerator(appDBontext appDBontext)
+        {
+            _appdbContext= appDBontext;
+            _dbSet = _appdbContext.Set<T>();
+        }
+        public async Task<IEnumerable<T>> GetallAsync() => await _dbSet.ToListAsync();
+        public async Task<T?> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
+
 
     }
 }
